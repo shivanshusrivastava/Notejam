@@ -1,0 +1,12 @@
+{{- $root := . }}
+{{- range $name, $values := .Values.configmap}}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ template "notejam.fullname" $root }}-{{ $name | lower }}
+data:
+  {{- range $key, $value := $values }}
+  {{ $key }}: {{ $value }}
+  {{- end }}
+---
+{{- end }}

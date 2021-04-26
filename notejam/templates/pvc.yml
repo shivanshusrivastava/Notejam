@@ -1,0 +1,25 @@
+{{- if .Values.persistence.enabled }}
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name:  {{ include "notejam.fullname" . }}
+  labels:
+    app:  {{ include "notejam.fullname" . }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
+  # Set this annotation to NOT let Kubernetes automatically create
+  # a persistent volume for this volume claim.
+spec:
+  accessModes:
+    - {{ .Values.persistence.accessMode | quote }}
+  volumeName: {{ include "notejam.fullname" . }}
+  resources:
+    requests:
+      storage: {{ .Values.persistence.size | quote }}
+  storageClassName: ""
+  selector:
+    # To make sure we match the claim with the exact volume, match the label
+    matchLabels:
+      usage:  {{ include "notejam.fullname" . }}
+{{- end }}      
