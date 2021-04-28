@@ -85,8 +85,8 @@ affinity: {}
 
 configmap:
   notejamconfig:
-    db: "/var/lib/sqllite/notejam_prod.db"
-    dsn: "sqlite://notejam_prod.db"
+    db: "/usr/src/sqllite/notejam_prod.db"
+    dsn: "sqlite:/usr/src/sqllite/notejam_prod.db"
 
 persistence:
   enabled: true

@@ -8,8 +8,8 @@ var settings = {
     dsn: "sqlite://notejam_test.db"
   },
   production: {
-    db: (process.env.db ? process.env.db: "notejam_prod.db"),
-    dsn: (process.env.dsn ? process.env.dsn: "sqlite://notejam_prod.db")
+    db: (process.env.db ? process.env.db: "/usr/src/sqllite/notejam_prod.db"),
+    dsn: (process.env.dsn ? process.env.dsn: "sqlite:/usr/src/sqllite/notejam_prod.db")
   }
 };
 
