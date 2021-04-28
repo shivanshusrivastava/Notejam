@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name:  {{ include "notejam.fullname" . }}
+  labels:
+    usage:  {{ include "notejam.fullname" . }}
+spec:
+  capacity:
+    storage: {{ .Values.persistence.size }}
+  accessModes:
+    - {{ .Values.persistence.accessMode }}
+  persistentVolumeReclaimPolicy: Retain
+  azureFile:
+    secretName: {{ .Values.pvsecrets.azuresecret.filesharesecret }}
+    shareName: {{ .Values.persistence.azuresharename }}
+    readOnly: false
+  mountOptions:
+  - dir_mode=0777
+  - file_mode=0777
+  - uid=1000
+  - gid=1000
+  - mfsymlinks
+  - nobrl
