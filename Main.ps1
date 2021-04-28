@@ -1,7 +1,7 @@
 ﻿$rg="notejam"
 $vnet="notejam_vnet"
 $cluster="notejam-aks"
-$subscription="54a55a45-a096-4efc-8ffa-e9ba116103bc"
+$subscription="To-be-entered"
 $storage_account_name="notejamstorage"
 $location="northeurope"
 $share_name="notejam-share"
